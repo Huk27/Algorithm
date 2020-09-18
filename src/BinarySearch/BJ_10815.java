@@ -16,6 +16,7 @@ public class BJ_10815 {
         N = Integer.valueOf(br.readLine());
         node = new int[N];
 
+        //
         String cardList[] = br.readLine().split(" ");
         HashMap<Integer, Integer> hashMap = new HashMap();
         for (int i = 0; i < N; i++) {
