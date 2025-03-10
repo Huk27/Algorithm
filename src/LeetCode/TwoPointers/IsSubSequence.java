@@ -34,10 +34,28 @@ to see if t has its subsequence.
 In this scenario, how would you change your code?
      */
     public static boolean isSubsequence(String s, String t) {
+        if (s == null || s.isEmpty()) {
+            return true;
+        }
+        char[] tArr = t.toCharArray();
+        int sIndex = 0;
+        for (int i=0; i<tArr.length; i++) {
+            if (s.charAt(sIndex) == t.charAt(i)) {
+                sIndex++;
+                if (sIndex >= s.length()) {
+                    break;
+                }
+            }
+        }
 
+        if (sIndex == s.length()) {
+            return true;
+        }
+
+        return false;
     }
 
     public static void main(String[] args) {
-
+        System.out.println(isSubsequence("b", "abc"));
     }
 }
