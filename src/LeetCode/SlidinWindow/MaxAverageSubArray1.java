@@ -26,20 +26,22 @@ public class MaxAverageSubArray1 {
 
     public static double findMaxAverage(int[] nums, int k) {
         int max = Integer.MIN_VALUE;
+        int sum = 0;
+        for (int i = 0; i < k; i++) {
+            sum += nums[i];
+        }
+        max = Math.max(max, sum);
 
-        for (int i=0; i<=nums.length - k; i++) {
-            int sum =0;
-            for (int j=0; j<k; j++) {
-                sum += nums[i+j];
-            }
 
+        for (int i = k; i < nums.length; i++) {
+            sum = sum + nums[i] - nums[i-k];
             max = Math.max(sum, max);
         }
 
-        return (double) max /k;
+        return (double) max / k;
     }
 
     public static void main(String[] args) {
-        System.out.println(findMaxAverage(new int[]{-1}, 1));
+        System.out.println(findMaxAverage(new int[]{1,2,3,4,5,6,7,8}, 4));
     }
 }
