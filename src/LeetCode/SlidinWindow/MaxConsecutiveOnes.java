@@ -32,6 +32,29 @@ import java.util.LinkedList;
 public class MaxConsecutiveOnes {
 
     public static int longestOnes(int[] nums, int k) {
+        int left = 0; // zero flip한 곳.
+        int max = 0;
+        int zeroCount = 0;
+
+        for (int right = 0; right < nums.length; right++) {
+            if (nums[right] == 0) {
+                zeroCount++;
+            }
+
+            while (zeroCount > k) {
+                if (nums[left] == 0) {
+                    zeroCount--;
+                }
+                left++;
+            }
+
+            max = Math.max(max, right - left);
+        }
+
+        return max;
+    }
+
+    public static int longestOnes2(int[] nums, int k) {
         int maxLen = 0;
 
         // 제일 첫번째 flip한 0의 위치
